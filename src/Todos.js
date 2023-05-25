@@ -5,6 +5,7 @@ import { Link, useParams } from 'react-router-dom';
 
 const Todos = ()=> {
   const { categories, todos } = useSelector(state => state);
+ 
   const { term } = useParams();
   const dispatch = useDispatch();
   const filtered = todos.filter(todo => !term || todo.name.includes(term));
@@ -20,9 +21,11 @@ const Todos = ()=> {
         {
           filtered.map( todo => {
             const category = categories.find(category => category.id === todo.categoryId);
+            // const userName = user.find(user => user.id === todo.id);
             return (
               <li key={ todo.id }>
                 <Link to={`/${todo.id}`}>
+                  {/* { userName.name} */}
                   { todo.name }
                 </Link>
                 ({ category ? category.name : 'none'})

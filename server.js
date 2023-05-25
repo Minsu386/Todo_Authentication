@@ -69,6 +69,16 @@ app.get('/api/auth', async(req, res, next)=> {
   }
 });
 
+app.get('/api/users', async(req, res, next)=> {
+  try {
+    const users = await User.findAll();
+    res.send(users);
+  }
+  catch(ex){
+    next(ex);
+  }
+});
+
 app.get('/api/todos', async(req, res, next)=> {
   try {
     const todos = await Todo.findAll();
